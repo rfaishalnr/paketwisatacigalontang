@@ -22,13 +22,179 @@
 </head>
 
 <style>
-	.landscape-img {
+.landscape-img {
   width: 100%; /* Lebar penuh kolom */
   height: auto; /* Pertahankan proporsi */
   aspect-ratio: 16/9; /* Bentuk landscape */
   object-fit: cover; /* Potong gambar agar sesuai */
   object-position: center; /* Fokus pada bagian tengah gambar */
+  transition: transform 0.3s ease; /* Tambahkan efek transisi untuk perubahan skala */
 }
+
+/* Mengatur gambar landscape agar memenuhi container dengan proporsi yang tepat */
+.about-img img {
+    width: 100%;
+    height: auto; /* Memastikan gambar tidak terdistorsi */
+    object-fit: cover; /* Memastikan gambar terpotong proporsional jika perlu */
+    max-height: 300px; /* Membatasi tinggi maksimal agar layout tetap rapi */
+    border-radius: 10px; /* Membuat sudut gambar melengkung */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Menambahkan efek hover */
+}
+
+/* Efek zoom saat hover */
+.about-img img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Menjaga jarak antar baris */
+.row {
+    margin-bottom: 30px;
+}
+
+
+/* buku tamu */
+/* Dropdown Menu Styling */
+.dropdown-menu {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  min-width: 300px; /* Lebar minimum yang lebih besar */
+  max-width: 400px; /* Batas lebar maksimum agar tidak terlalu besar */
+  padding: 10px 0;
+  overflow-wrap: break-word; /* Memastikan teks panjang tidak melampaui batas */
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Dropdown Item Styling */
+.dropdown-item {
+  color: #333;
+  font-size: 16px;
+  padding: 10px 20px;
+  white-space: normal; /* Mengizinkan teks untuk membungkus ke baris berikutnya */
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+  color: #007bff;
+}
+
+
+/* paketwisata */
+/* Tooltip Container */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Default Tooltip Content (hidden) */
+.tooltip-content {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  min-width: 200px;
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Tooltip Right Positioning */
+.tooltip-content.tooltip-right {
+  top: 50%;
+  left: 110%; /* Positioned to the right of the button */
+  transform: translateY(-50%);
+  margin-left: 10px;
+}
+
+/* Show Tooltip on Hover */
+.tooltip-container:hover .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* section about */
+.section {
+    padding: 60px 0;
+}
+
+.about-content h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.about-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #666;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+.bg-light {
+    background-color: #f9f9f9;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.hover-zoom {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* bannerfoto */
+.adjustable-img {
+    display: block; /* Membuat elemen sebagai blok agar margin berfungsi */
+    margin: 0 auto; /* Pusatkan gambar secara horizontal */
+    width: 60%; /* Atur lebar gambar default */
+    height: auto; /* Pertahankan rasio aspek */
+    max-height: 1000px; /* Sesuaikan tinggi maksimum sesuai kebutuhan */
+    object-fit: cover; /* Pastikan gambar tetap terlihat proporsional */
+    border-radius: 10px; /* Opsional: Tambahkan sudut melengkung */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opsional: Tambahkan bayangan */
+	margin-bottom: -80px;
+	margin-top: -105px;
+}
+
+@media (max-width: 768px) { /* Untuk perangkat dengan lebar layar <= 768px (tablet/ponsel) */
+    .adjustable-img {
+        width: 80%; /* Perbesar lebar gambar pada perangkat kecil */
+        max-height: 700px; /* Sesuaikan tinggi maksimum jika diperlukan */
+    }
+}
+
+@media (max-width: 480px) { /* Untuk perangkat dengan lebar layar <= 480px (ponsel kecil) */
+    .adjustable-img {
+        width: 90%; /* Lebar gambar hampir penuh pada ponsel kecil */
+        max-height: 600px; /* Sesuaikan tinggi maksimum jika diperlukan */
+    }
+}
+
 
 </style>
 
@@ -93,8 +259,31 @@
 					<p class="mb-4 pr-5">Kecamatan Cigalontang, Kabupaten Tasikmalaya, Provinsi Jawa Barat</p>
 					<div class="btn-container ">
 						<div class="btn-container d-flex flex-column align-items-start">
-							<a href="paketan.html" class="btn btn-main-2 btn-icon btn-round-full">Paket Desa Wisata<i class="icofont-simple-right ml-2"></i></a>
-							<a href="#" class="btn btn-main-2 btn-icon btn-round-full mt-2">Buku Tamu<i class="icofont-simple-right ml-2"></i></a>
+							<!-- paket desa wisata -->
+							<a href="paketan.html" class="btn btn-main-2 btn-icon btn-round-full">
+								Paket Desa Wisata <i class="icofont-simple-right ml-2"></i>
+							</a>
+							
+							  
+							<!-- buku tamu -->
+							<div class="dropdown mt-2">
+								<a href="#" 
+								   class="btn btn-main-2 btn-icon btn-round-full dropdown-toggle" 
+								   id="dropdownMenuButton" 
+								   data-toggle="dropdown" 
+								   aria-haspopup="true" 
+								   aria-expanded="false">
+								  Buku Tamu <i class="icofont-simple-right ml-2 mr"></i>
+								</a>
+								<div class="dropdown-menu show" aria-labelledby="dropdownMenuButton">
+								  <a class="dropdown-item" href="https://s.id/NgulakPangangonan">Ngulak pangangonan</a>
+								  <a class="dropdown-item" href="https://s.id/NgalanglangKarancageanDomba">Ngalanglang Karancagéan Domba</a>
+								  <a class="dropdown-item" href="https://s.id/NgadendangRasa">Ngadéndang Rasa</a>
+								  <a class="dropdown-item" href="https://s.id/SerenManis">Sérén Manis</a>
+								</div>
+							  </div>
+							  
+
 						</div>
 					</div>
 				</div>
@@ -102,6 +291,10 @@
 		</div>
 	</div>
 </section>
+
+
+<img src="images/bg/bannercgl.png" alt="pangangonan" class="adjustable-img"> <br><br>
+
 
 <!-- VIDEO SECTION START -->
 <!-- <section class="cta-section my-0">
@@ -151,188 +344,46 @@
         <div class="row align-items-center">
             <div class="col-lg-12 text-center">
                 <div class="about-content">
-                    <h2 class="title-color">Paket Wisata</h2>
+                    <h2 class="title-color">Paket Desa Wisata</h2>
                     <p class="mt-4 mb-5 text-center">
-                        Desa Wisata adalah sebuah destinasi pariwisata yang menawarkan pengalaman unik bagi pengunjung untuk menikmati kehidupan pedesaan, budaya lokal, dan keindahan alam yang masih alami. Di desa ini, pengunjung dapat berinteraksi langsung dengan masyarakat setempat, belajar tentang pertanian, dan menikmati berbagai kegiatan tradisional yang diwariskan turun-temurun. <br><br>
-						Acara ini juga dihadiri oleh Kepala Dinas Tanaman Pangan dan Hortikultura Provinsi Riau serta Kabupaten Kuantan Singingi. Tujuan utama dari acara ini adalah untuk memperkenalkan potensi desa wisata sebagai sektor unggulan yang dapat mendukung kemajuan daerah, sekaligus memberikan peluang bagi masyarakat lokal untuk meningkatkan perekonomian mereka melalui sektor pariwisata yang berkelanjutan.
-                    </p>
+						Desa Wisata adalah sebuah destinasi pariwisata yang menawarkan pengalaman unik bagi pengunjung untuk menikmati kehidupan pedesaan, budaya lokal, dan keindahan alam yang masih alami. Di desa ini, pengunjung dapat berinteraksi langsung dengan masyarakat setempat dan menikmati berbagai kegiatan tradisional yang diwariskan turun-temurun.
+						Tujuan utama dari Desa Wisata ini adalah untuk memperkenalkan potensi desa wisata sebagai sektor unggulan yang dapat mendukung kemajuan daerah, sekaligus memberikan peluang bagi masyarakat lokal untuk meningkatkan perekonomian melalui sektor pariwisata yang berkelanjutan.
+					
+					
+					</p>
                 </div>
             </div>
         </div>
 
-		<div class="row align-items-center">
-			<!-- Foto 1 -->
+        <!-- Foto Baris 1 -->
+        <div class="row align-items-center bg-light py-4 rounded shadow-sm">
+            <!-- Foto 1 -->
+            <div class="col-lg-6 col-sm-12 mb-4">
+                <div class="about-img text-center">
+                    <img src="images/wisata/gform jaipongan.png" alt="jaipongan" class="img-fluid rounded shadow hover-zoom">
+                </div>
+            </div>
+            <!-- Foto 2 -->
+            <div class="col-lg-6 col-sm-12 mb-4">
+                <div class="about-img text-center">
+                    <img src="images/wisata/gform domba.png" alt="domba pak ajum" class="img-fluid rounded shadow hover-zoom">
+                </div>
+            </div>
 			<div class="col-lg-6 col-sm-12 mb-4">
-			  <div class="about-img text-center">
-				<img src="images/wisata/10.jpeg" alt="jaipongan" class="img-fluid landscape-img">
-			  </div>
-			</div>
-			<!-- Foto 2 -->
-			<div class="col-lg-6 col-sm-12 mb-4">
-			  <div class="about-img text-center">
-				<img src="images/wisata/18.jpeg" alt="domba pak ajum" class="img-fluid landscape-img">
-			  </div>
-			</div>
-		  </div>
-		  
-		  <div class="row align-items-center">
-			<!-- Foto 3 -->
-			<div class="col-lg-6 col-sm-12 mb-4">
-			  <div class="about-img text-center">
-				<img src="images/wisata/3.jpeg" alt="situ pangangonan" class="img-fluid landscape-img">
-			  </div>
-			</div>
-			<!-- Foto 4 -->
-			<div class="col-lg-6 col-sm-12 mb-4">
-			  <div class="about-img text-center">
-				<img src="images/wisata/4.jpeg" alt="wajit mak eroh" class="img-fluid landscape-img">
-			  </div>
-			</div>
-		  </div>
-		  
-		  
-
+                <div class="about-img text-center">
+                    <img src="images/wisata/gform situ.jpg" alt="situ pangangonan" class="img-fluid rounded shadow hover-zoom">
+                </div>
+            </div>
+            <!-- Foto 4 -->
+            <div class="col-lg-6 col-sm-12 mb-4">
+                <div class="about-img text-center">
+                    <img src="images/wisata/gform wajit.png" alt="wajit mak eroh" class="img-fluid rounded shadow hover-zoom">
+                </div>
+            </div>
+        </div>
 
     </div>
 </section>
-
-
-
-
-
-
-<!-- 
-<section class="section testimonial-2 gray-bg">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-7">
-				<div class="section-title text-center">
-					<h2>Apa kata orang?</h2>
-					<div class="divider mx-auto my-4"></div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi ut perspiciatis unde libero, maxime autem dolor odit animi, eveniet neque aspernatur. Distinctio est voluptatibus ut nobis porro exercitationem totam aspernatur?</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-12 testimonial-wrap-2">
-				<div class="testimonial-block style-2  gray-bg">
-					<i class="icofont-quote-right"></i>
-
-					<div class="testimonial-thumb">
-						<img src="images/testimonial/1.jpg" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info ">
-						<h4>Wow Luarbiasa!</h4>
-						<span>Junaris Alfianto</span>
-						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi facere delectus voluptate cum tenetur cupiditate unde deleniti necessitatibus eaque esse,
-						</p>
-					</div>
-				</div>
-
-				<div class="testimonial-block style-2  gray-bg">
-					<i class="icofont-quote-right"></i>
-
-					<div class="testimonial-thumb">
-						<img src="images/testimonial/1.jpg" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info ">
-						<h4>Wow Luarbiasa!</h4>
-						<span>Junaris Alfianto</span>
-						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi facere delectus voluptate cum tenetur cupiditate unde deleniti necessitatibus eaque esse,
-						</p>
-					</div>
-				</div>
-
-				<div class="testimonial-block style-2  gray-bg">
-					<i class="icofont-quote-right"></i>
-
-					<div class="testimonial-thumb">
-						<img src="images/testimonial/1.jpg" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info ">
-						<h4>Wow Luarbiasa!</h4>
-						<span>Junaris Alfianto</span>
-						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi facere delectus voluptate cum tenetur cupiditate unde deleniti necessitatibus eaque esse,
-						</p>
-					</div>
-				</div>
-
-				<div class="testimonial-block style-2  gray-bg">
-					<i class="icofont-quote-right"></i>
-
-					<div class="testimonial-thumb">
-						<img src="images/testimonial/1.jpg" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info ">
-						<h4>Wow Luarbiasa!</h4>
-						<span>Junaris Alfianto</span>
-						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi facere delectus voluptate cum tenetur cupiditate unde deleniti necessitatibus eaque esse,
-						</p>
-					</div>
-				</div>
-
-				<div class="testimonial-block style-2  gray-bg">
-					<i class="icofont-quote-right"></i>
-
-					<div class="testimonial-thumb">
-						<img src="images/testimonial/1.jpg" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info ">
-						<h4>Wow Luarbiasa!</h4>
-						<span>Junaris Alfianto</span>
-						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi facere delectus voluptate cum tenetur cupiditate unde deleniti necessitatibus eaque esse,
-						</p>
-					</div>
-				</div>
-
-				<div class="testimonial-block style-2  gray-bg">
-					<i class="icofont-quote-right"></i>
-
-					<div class="testimonial-thumb">
-						<img src="images/testimonial/1.jpg" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info ">
-						<h4>Wow Luarbiasa!</h4>
-						<span>Junaris Alfianto</span>
-						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi facere delectus voluptate cum tenetur cupiditate unde deleniti necessitatibus eaque esse,
-						</p>
-					</div>
-				</div>
-
-				<div class="testimonial-block style-2  gray-bg">
-					<i class="icofont-quote-right"></i>
-
-					<div class="testimonial-thumb">
-						<img src="images/testimonial/1.jpg" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info ">
-						<h4>Wow Luarbiasa!</h4>
-						<span>Junaris Alfianto</span>
-						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi facere delectus voluptate cum tenetur cupiditate unde deleniti necessitatibus eaque esse,
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section> -->
 
 
 <!-- footer Start -->
@@ -401,7 +452,25 @@
     Essential Scripts
     =====================================-->
 
-    
+    <script>
+		document.getElementById('dropdownMenuButton').addEventListener('click', function(e) {
+		  e.preventDefault();
+		  const dropdown = document.querySelector('.dropdown-menu');
+		  dropdown.classList.toggle('show');
+		});
+
+// 		document.querySelector('.btn').addEventListener('click', function (e) {
+//   e.preventDefault();
+//   const tooltip = document.querySelector('.tooltip-content');
+//   tooltip.style.visibility = tooltip.style.visibility === 'visible' ? 'hidden' : 'visible';
+// });
+
+
+
+
+	  </script>
+	  
+	
     <!-- Main jQuery -->
     <script src="plugins/jquery/jquery.js"></script>
     <!-- Bootstrap 4.3.2 -->
